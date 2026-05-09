@@ -1,0 +1,186 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.publication-title {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.publication-venue {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  color: #4a4a4a;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.author-affiliation {
+  display: inline-block;
+  margin-right: 0.6rem;
+}
+
+.author-affiliation .number {
+  font-size: 0.85em;
+  vertical-align: super;
+  margin-right: 0.15em;
+}
+
+.publication-banner {
+  max-height: parent;
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.publication-title {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.publication-banner img {
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+  width: 100%;
+}
+
+.publication-authors {
+  text-align: center;
+}
+
+.publication-authors strong {
+  color: hsl(0, 0%, 21%);
+}
+
+.publication-affiliations {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #4a4a4a;
+}
+
+.publication-links {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.publication-links .button {
+  margin: 0.25rem;
+}
+
+.results-table {
+  margin: 1.5rem 0;
+}
+
+.results-table th, .results-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.results-table td.method-name {
+  text-align: left;
+  font-weight: 500;
+}
+
+.results-table tr.our-method {
+  background-color: #e6f3ff;
+  font-weight: bold;
+}
+
+.bibtex-block {
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  padding: 1.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.bibtex-section {
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1rem;
+}
+
+.method-figure {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.method-figure img {
+  max-width: 100%;
+  height: auto;
+}
+
+.section-title {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 700;
+}
+
+.hero.is-light.publication-header {
+  background: #fafafa;
+}
+
+.subtitle.has-text-centered.is-size-5 {
+  font-family: 'Castoro', serif;
+  font-style: italic;
+  color: #4a4a4a;
+}
+
+footer.footer {
+  padding: 2rem 1.5rem;
+  background-color: #fafafa;
+}
+
+.footer .content {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #7a7a7a;
+}
+
+.footer .content a {
+  color: hsl(204, 86%, 53%);
+}
+
+sup.eq-contrib {
+  color: hsl(204, 86%, 53%);
+}

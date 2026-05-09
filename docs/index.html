@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="MVProbe: What Linear Probes Miss — Multi-View Probing for Weight-Space Learning. ICML 2026.">
+  <meta name="keywords" content="MVProbe, weight-space learning, model probing, ICML 2026">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="MVProbe: Multi-View Probing for Weight-Space Learning (ICML 2026)">
+  <meta property="og:description" content="Official project page for the ICML 2026 paper introducing MVProbe.">
+  <meta property="og:image" content="static/images/overview.png">
+
+  <title>MVProbe: Multi-View Probing for Weight-Space Learning (ICML 2026)</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script defer src="static/js/index.js"></script>
+</head>
+
+<body>
+
+<!-- Hero -->
+<section class="hero is-light publication-header">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">
+            What Linear Probes Miss:<br>Multi-View Probing for Weight-Space Learning
+          </h1>
+          <h2 class="subtitle has-text-centered is-size-5 publication-venue">
+            ICML 2026
+          </h2>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/AI-hew-math">Eunwoo Heo</a><sup class="eq-contrib">1†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/tjrudrnr2">Kyungwook Seo</a><sup class="eq-contrib">1†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/jaejun-yoo">Jaejun Yoo</a><sup>2*</sup>
+            </span>
+          </div>
+
+          <div class="publication-affiliations">
+            <span class="author-affiliation"><span class="number">1</span>POSTECH</span>
+            <span class="author-affiliation"><span class="number">2</span>UNIST</span>
+          </div>
+          <div class="publication-affiliations" style="font-size:0.95rem; margin-top:0.3rem;">
+            <sup class="eq-contrib">†</sup>Equal contribution &nbsp;&nbsp; <sup>*</sup>Corresponding author
+          </div>
+
+          <!-- Action buttons -->
+          <div class="column has-text-centered publication-links">
+            <span class="link-block">
+              <a href="https://openreview.net/forum?id=vfqrmuVULL"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <!-- TODO: replace # with arXiv URL when available -->
+            <span class="link-block">
+              <a href="#"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="ai ai-arxiv"></i></span>
+                <span>arXiv</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/AI-hew-math/MVProbe"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://openreview.net/forum?id=vfqrmuVULL"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="ai ai-open-access"></i></span>
+                <span>OpenReview</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser / Overview figure -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="method-figure">
+      <img src="static/images/overview.png" alt="MVProbe overview"/>
+      <p class="is-size-6 has-text-grey" style="margin-top:1rem;">
+        <strong>Overview of MVProbe.</strong> MVProbe extracts multiple complementary views
+        of weight matrices through first- and second-order branches, aggregating them into
+        a unified probe that captures information missed by a single linear projection.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-title">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: replace with verbatim abstract from OpenReview -->
+          <p>
+            Predicting properties of neural networks directly from their weights is a
+            powerful tool for understanding and managing populations of models, but
+            existing linear probes capture only a fraction of the information encoded in
+            weight space. We propose <strong>MVProbe</strong>, a multi-view probing
+            framework that combines first- and second-order weight statistics through a
+            small set of view-specific branches. By aggregating complementary perspectives
+            on the same weights, MVProbe substantially improves both discriminative
+            classification on the Model Jungle benchmark (ResNet, SupViT, MAE, DINO
+            fine-tunes) and generative LoRA identification on Stable Diffusion adapters
+            (SD_200 and SD_1k). MVProbe establishes a new state of the art across both
+            regimes while remaining a lightweight probe that does not require
+            end-to-end fine-tuning of the underlying weights.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Method overview -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-title has-text-centered">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            Linear probes that operate on weights as flat vectors lose information about
+            how channels interact across layers. MVProbe addresses this with multiple
+            <em>views</em> of each weight matrix \(W\): a direct view (\(W\)),
+            input/output Gram views (\(W^\top W\), \(W W^\top\)), and mixed views.
+            Each view is processed by a lightweight branch and the resulting
+            representations are aggregated for the downstream prediction task.
+          </p>
+          <p>
+            We instantiate MVProbe for two regimes: <strong>discriminative</strong>
+            classification of fine-tuning class on the Model Jungle benchmark, and
+            <strong>generative</strong> identification of the LoRA-conditioning class on
+            Stable Diffusion adapters. In both regimes the same multi-view backbone
+            outperforms strong baselines, including ProbeX and its scaled variants.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Discriminative results -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-title has-text-centered">Discriminative Results</h2>
+        <p class="has-text-centered has-text-grey">
+          Accuracy (%), mean<sub>±std</sub> over seeds 1–5 on the Model Jungle benchmark.
+        </p>
+        <div class="table-container results-table">
+          <table class="table is-fullwidth is-striped is-hoverable">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>ResNet</th>
+                <th>SupViT</th>
+                <th>MAE</th>
+                <th>DINO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="method-name">StatNN</td>
+                <td>55.20</td><td>55.80</td><td>54.83</td><td>55.69</td>
+              </tr>
+              <tr>
+                <td class="method-name">ProbeGen</td>
+                <td>78.27</td><td>78.48</td><td>70.68</td><td>61.26</td>
+              </tr>
+              <tr>
+                <td class="method-name">ProbeX</td>
+                <td>81.61<sub>±1.29</sub></td>
+                <td>88.08<sub>±0.39</sub></td>
+                <td>77.11<sub>±0.14</sub></td>
+                <td>72.54<sub>±0.18</sub></td>
+              </tr>
+              <tr>
+                <td class="method-name">ProbeX (×4)</td>
+                <td>87.16<sub>±0.26</sub></td>
+                <td>90.33<sub>±0.31</sub></td>
+                <td>77.26<sub>±0.12</sub></td>
+                <td>73.25<sub>±0.21</sub></td>
+              </tr>
+              <tr class="our-method">
+                <td class="method-name">MVProbe (Ours)</td>
+                <td>92.24<sub>±0.25</sub></td>
+                <td>92.33<sub>±0.37</sub></td>
+                <td>81.62<sub>±0.15</sub></td>
+                <td>78.29<sub>±0.31</sub></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Generative results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-title has-text-centered">Generative Results (Stable Diffusion LoRA)</h2>
+        <p class="has-text-centered has-text-grey">
+          In-distribution and zero-shot accuracy on SD_200 and SD_1k LoRA adapters
+          (mean<sub>±std</sub> over seeds 1–5, layer 46).
+        </p>
+
+        <h3 class="title is-5 has-text-centered" style="margin-top:1.5rem;">SD_200 — 200 ImageNet classes</h3>
+        <div class="table-container results-table">
+          <table class="table is-fullwidth is-striped is-hoverable">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>In-Distribution Acc</th>
+                <th>Zero-shot Acc</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="method-name">ProbeX</td>
+                <td>98.48<sub>±0.48</sub></td>
+                <td>94.01<sub>±0.77</sub></td>
+              </tr>
+              <tr>
+                <td class="method-name">ProbeX (×4)</td>
+                <td>97.72<sub>±0.50</sub></td>
+                <td>93.53<sub>±1.99</sub></td>
+              </tr>
+              <tr class="our-method">
+                <td class="method-name">MVProbe (Ours)</td>
+                <td>99.80<sub>±0.00</sub></td>
+                <td>95.53<sub>±0.65</sub></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="title is-5 has-text-centered" style="margin-top:1.5rem;">SD_1k — 1000 ImageNet classes</h3>
+        <div class="table-container results-table">
+          <table class="table is-fullwidth is-striped is-hoverable">
+            <thead>
+              <tr>
+                <th>Method</th>
+                <th>In-Distribution Acc</th>
+                <th>Zero-shot Acc</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="method-name">ProbeX</td>
+                <td>35.75<sub>±2.44</sub></td>
+                <td>52.42<sub>±2.48</sub></td>
+              </tr>
+              <tr>
+                <td class="method-name">ProbeX (×4)</td>
+                <td>32.46<sub>±3.08</sub></td>
+                <td>51.14<sub>±3.88</sub></td>
+              </tr>
+              <tr class="our-method">
+                <td class="method-name">MVProbe (Ours)</td>
+                <td>97.88<sub>±0.37</sub></td>
+                <td>97.96<sub>±0.29</sub></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX -->
+<section class="section is-light bibtex-section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 section-title">BibTeX</h2>
+        <button id="copy-bibtex" class="button is-small is-rounded copy-button">
+          <span class="icon"><i class="fas fa-copy"></i></span>
+          <span>Copy</span>
+        </button>
+<pre id="bibtex-content" class="bibtex-block">@inproceedings{heo2026mvprobe,
+  title     = {What Linear Probes Miss: Multi-View Probing for Weight-Space Learning},
+  author    = {Heo, Eunwoo and Seo, Kyungwook and Yoo, Jaejun},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year      = {2026},
+  series    = {Proceedings of Machine Learning Research},
+  publisher = {PMLR}
+}</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Acknowledgements / Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="content">
+      <p>
+        This codebase builds upon
+        <a href="https://github.com/eliahuhorwitz/ProbeX">ProbeX (Horwitz et al., CVPR 2025)</a>.
+        Source for this page is available
+        <a href="https://github.com/AI-hew-math/MVProbe/tree/main/docs">here</a>.
+      </p>
+      <p>
+        Page styling adapted from the
+        <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">
+        Academic Project Page Template</a>.
+        Licensed under
+        <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
