@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="MVProbe: Multi-View Probing for Weight-Space Learning (ICML 2026)">
   <meta property="og:description" content="Official project page for the ICML 2026 paper introducing MVProbe.">
-  <meta property="og:image" content="static/images/overview.png">
+  <meta property="og:image" content="static/images/method.png">
 
   <title>MVProbe: Multi-View Probing for Weight-Space Learning (ICML 2026)</title>
 
@@ -100,48 +100,27 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 section-title">TL;DR &mdash; Key Contributions</h2>
     <div class="columns is-multiline">
-      <div class="column is-3-desktop is-6-tablet">
+      <div class="column is-4-desktop is-6-tablet">
         <div class="contribution-card">
-          <span class="icon-wrapper"><i class="fas fa-eye"></i></span>
-          <h4>Multi-view probing</h4>
-          <p>Beyond first-order linear probes: combine direct and Gram-based views of weight matrices to capture row&ndash;column interactions.</p>
+          <span class="icon-wrapper"><i class="fas fa-eye-slash"></i></span>
+          <h4>A fundamental limitation of single-view probing</h4>
+          <p>We prove that distinct weight matrices can collapse to the same first-order probe response, making them indistinguishable.</p>
         </div>
       </div>
-      <div class="column is-3-desktop is-6-tablet">
+      <div class="column is-4-desktop is-6-tablet">
         <div class="contribution-card">
-          <span class="icon-wrapper"><i class="fas fa-square-root-variable"></i></span>
-          <h4>Theory-grounded fusion</h4>
-          <p>We analyze scaling laws across probing orders and derive a principled standardization that balances all branches.</p>
+          <span class="icon-wrapper"><i class="fas fa-layer-group"></i></span>
+          <h4>MVProbe: multi-perspective probing</h4>
+          <p>Four complementary branches \(\mathbf{XU},\mathbf{X}^{\!\top}\!\mathbf{V},\mathbf{XX}^{\!\top}\!\mathbf{W},\mathbf{X}^{\!\top}\!\mathbf{XZ}\) combine first-order projections with Gram-based interaction views, fused by a theory-grounded per-sample standardization.</p>
         </div>
       </div>
-      <div class="column is-3-desktop is-6-tablet">
+      <div class="column is-4-desktop is-6-tablet">
         <div class="contribution-card">
           <span class="icon-wrapper"><i class="fas fa-trophy"></i></span>
-          <h4>SOTA on Model Jungle</h4>
-          <p>MVProbe consistently outperforms ProbeX across ResNet, SupViT, MAE, and DINO &mdash; up to <strong>+10.6%</strong> accuracy.</p>
+          <h4>SOTA on Model Jungle, robust across layers</h4>
+          <p>Consistent gains over ProbeX on ResNet, SupViT, MAE, and DINO &mdash; and stable performance even on layers where existing probes collapse to near-random.</p>
         </div>
       </div>
-      <div class="column is-3-desktop is-6-tablet">
-        <div class="contribution-card">
-          <span class="icon-wrapper"><i class="fas fa-bolt"></i></span>
-          <h4>Generalizes to LoRA</h4>
-          <p>On Stable Diffusion adapters, MVProbe pushes SD_1k zero-shot accuracy from 52% to <strong>98%</strong>.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Teaser / Overview figure -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="method-figure">
-      <img src="static/images/overview.png" alt="MVProbe overview"/>
-      <p class="is-size-6 has-text-grey" style="margin-top:1rem;">
-        <strong>Overview of MVProbe.</strong> MVProbe extracts multiple complementary views
-        of weight matrices through first- and second-order branches, aggregating them into
-        a unified probe that captures information missed by a single linear projection.
-      </p>
     </div>
   </div>
 </section>
@@ -187,59 +166,103 @@
         <h2 class="title is-3 section-title has-text-centered">Method</h2>
 
         <div class="figure-block">
-          <img src="static/images/method.png" alt="MVProbe architecture: multi-view probing branches"/>
+          <img src="static/images/method.png" alt="MVProbe architecture: four-branch probing"/>
           <p class="figure-caption">
-            <strong>The MVProbe architecture.</strong> Each weight matrix is processed by
-            multiple complementary branches — a direct first-order view and Gram-based
-            second-order views (\(W^\top W\), \(W W^\top\), and mixed terms) — and the
-            standardized branch outputs are fused into a single permutation-equivariant
-            representation.
+            <strong>Overview of MVProbe.</strong> Given a weight matrix
+            \(\mathbf{X}\in\mathbb{R}^{m\times n}\), MVProbe extracts probe responses
+            from four complementary views.
+            <strong>(a) First-order probing:</strong> learnable probes \(\mathbf{U}\) and
+            \(\mathbf{V}\) produce row- and column-space responses \(\mathbf{XU}\) and
+            \(\mathbf{X}^{\top}\mathbf{V}\). We also compute \(\mathbf{XZ}\) and
+            \(\mathbf{X}^{\top}\mathbf{W}\) as intermediate projections for the
+            second-order branches.
+            <strong>(b) Second-order probing:</strong> applying \(\mathbf{X}^{\top}\) and
+            \(\mathbf{X}\) once more yields Gram-based responses
+            \(\mathbf{X}^{\top}\mathbf{X}\mathbf{Z}\) and
+            \(\mathbf{X}\mathbf{X}^{\top}\mathbf{W}\), capturing column- and row-wise
+            correlation structure.
+            <strong>(c)</strong> All responses are standardized, processed by branch MLPs,
+            concatenated (\(\oplus\)), and fed into a shared encoder followed by a
+            classifier head.
           </p>
-          <a class="download-link" href="static/pdfs/method.pdf" target="_blank">
-            <i class="fas fa-file-pdf"></i> Download PDF
-          </a>
         </div>
 
         <div class="content has-text-justified">
           <p>
-            Linear probes that operate on weights as flat vectors lose information about
-            how channels interact across layers. MVProbe addresses this with multiple
-            <em>views</em> of each weight matrix \(W\): a direct view (\(W\)),
-            input/output Gram views (\(W^\top W\), \(W W^\top\)), and mixed views.
-            Each view is processed by a lightweight branch and the resulting
-            representations are aggregated for the downstream prediction task.
+            Existing single-direction probes summarize a weight matrix
+            \(\mathbf{X}\in\mathbb{R}^{m\times n}\) by a single first-order projection
+            \(\mathbf{X}\mathbf{u}\). Such projections are inherently ambiguous:
+            distinct weight matrices can produce identical probe responses, collapsing
+            them to the same representation. They also miss higher-order structure such
+            as the row–column correlations encoded in the Gram matrices
+            \(\mathbf{X}\mathbf{X}^{\top}\) and \(\mathbf{X}^{\top}\mathbf{X}\).
           </p>
           <p>
-            We instantiate MVProbe for two regimes: <strong>discriminative</strong>
-            classification of fine-tuning class on the Model Jungle benchmark, and
-            <strong>generative</strong> identification of the LoRA-conditioning class on
-            Stable Diffusion adapters. In both regimes the same multi-view backbone
-            outperforms strong baselines, including ProbeX and its scaled variants.
+            <strong>MVProbe</strong> addresses this with four complementary branches.
+            <em>First-order branches</em> use learnable probe matrices
+            \(\mathbf{U},\mathbf{V}\) and produce \(\mathbf{XU}\) and
+            \(\mathbf{X}^{\top}\mathbf{V}\) — direct row/column projections.
+            <em>Second-order (kernel) branches</em> use probe matrices
+            \(\mathbf{W},\mathbf{Z}\) and apply the Gram operators to produce
+            \(\mathbf{XX}^{\top}\mathbf{W}\) and \(\mathbf{X}^{\top}\mathbf{XZ}\),
+            which encode pairwise similarity structure between output and input neurons,
+            respectively. Each branch is followed by per-sample standardization, a
+            branch-specific MLP, and feature concatenation; a shared encoder and
+            classifier head complete the model.
+          </p>
+          <p>
+            We motivate this design from two perspectives. From <em>kernel methods</em>,
+            Gram matrices encode pairwise similarity that first-order projections
+            cannot capture. From <em>landmark-based representations</em> in manifold
+            learning, the four probe matrices act as learned reference directions and
+            kernel-space landmarks that together coordinate the geometry of the weight
+            matrix.
           </p>
         </div>
 
-        <h3 class="title is-5 section-title" style="margin-top:2.5rem;">Theoretical Justification</h3>
+        <h3 class="title is-4 section-title has-text-centered" style="margin-top:2.5rem;">Theoretical Justification</h3>
 
         <div class="figure-block">
-          <img src="static/images/thm1.png" alt="Theorem 1: scaling law across probing orders"/>
+          <img src="static/images/thm1.png" alt="Conceptual illustration of Theorem 1"/>
           <p class="figure-caption">
-            <strong>Scaling laws of probing orders.</strong> First- and higher-order probing
-            statistics scale at fundamentally different rates with weight dimensions; without
-            standardization, higher-order branches dominate the fused representation.
+            <strong>Conceptual illustration of Theorem 1.</strong>
+            With the same probe matrix \(\mathbf{U}\), two distinct weight matrices
+            \(\mathbf{X}_1\) and \(\mathbf{X}_2\) may produce first-order probe
+            responses that are indistinguishable under standard probing.
+            Theorem 1 shows that second-order, Gram-based representations can
+            separate such cases.
           </p>
-          <a class="download-link" href="static/pdfs/thm1.pdf" target="_blank">
-            <i class="fas fa-file-pdf"></i> Download PDF
-          </a>
         </div>
 
         <div class="theorem-box">
-          <p class="theorem-label">Theorem 1 (informal)</p>
+          <p class="theorem-label">Theorem 1 — Expressiveness of Second-Order Probes</p>
           <p class="theorem-statement">
-            For an isotropic weight matrix \(W \in \mathbb{R}^{m \times n}\), the
-            \(k\)-th order probing response scales as
-            \(\mathcal{O}(m^{a_k} n^{b_k})\) where \((a_k, b_k)\) depends explicitly on the
-            view. A principled per-branch standardization removes this scale imbalance and
-            makes all views contribute on equal footing during fusion.
+            Let \(\mathbf{U}\in\mathbb{R}^{n\times r}\) be a probe matrix with
+            \(\mathrm{rank}(\mathbf{U})=r<n\), and define the first- and second-order
+            features
+            \(\Phi_1(\mathbf{X}) := \mathbf{X}\mathbf{U}\) and
+            \(\Phi_2(\mathbf{X}) := (\mathbf{X}^{\top}\mathbf{X})\mathbf{U}\).
+            Then there exist distinct \(\mathbf{X}_1\neq\mathbf{X}_2\) with
+            \(\Phi_1(\mathbf{X}_1)=\Phi_1(\mathbf{X}_2)\) but
+            \(\Phi_2(\mathbf{X}_1)\neq\Phi_2(\mathbf{X}_2)\). Consequently, when
+            \(r<n\), adding second-order branches separates weight matrices that are
+            indistinguishable to first-order probing alone.
+          </p>
+        </div>
+
+        <div class="theorem-box">
+          <p class="theorem-label">Theorem 3 — Scale Imbalance &amp; Standardization</p>
+          <p class="theorem-statement">
+            For \(\mathbf{X}\) with i.i.d. \(\mathcal{N}(0,\sigma^2)\) entries and
+            unit-norm probe columns, the expected scale ratio between the second- and
+            first-order responses is
+            \(\mathbb{E}\!\left[\|\mathbf{S}^{(2)}\|_F^2\right]/
+              \mathbb{E}\!\left[\|\mathbf{S}^{(1)}\|_F^2\right]
+              = \tfrac{n(n+m+1)}{m}\sigma^2 = \mathcal{O}(n\sigma^2)\),
+            so naive concatenation is dominated by the second-order branch. Per-sample
+            standardization yields \(\|\tilde{\mathbf{S}}\|_F^2 = mr\) regardless of
+            order, equalizing branch contributions and motivating the standardization
+            block in MVProbe.
           </p>
         </div>
       </div>
@@ -344,14 +367,11 @@
         <div class="figure-block">
           <img src="static/images/layerwise.png" alt="Layer-wise robustness comparison"/>
           <p class="figure-caption">
-            <strong>Layer-wise robustness.</strong> Solid lines are MVProbe; dashed lines
-            are ProbeX (shaded bands show variance over seeds). MVProbe maintains a
-            consistent advantage across all probed layers — it does not rely on cherry-picking
-            a single best layer.
+            <strong>Layer-wise performance comparison.</strong> MVProbe (solid lines)
+            vs. ProbeX (dashed lines) across all layers. Shaded bands indicate the
+            performance volatility. MVProbe maintains higher accuracy across most
+            layers and shows less sensitivity to layer selection.
           </p>
-          <a class="download-link" href="static/pdfs/layerwise.pdf" target="_blank">
-            <i class="fas fa-file-pdf"></i> Download PDF
-          </a>
         </div>
       </div>
     </div>
@@ -370,11 +390,12 @@
         </p>
 
         <div class="figure-block">
-          <img src="static/images/sd_layerwise.png" alt="Stable Diffusion layer-wise performance heatmap"/>
+          <img src="static/images/sd_layerwise.png" alt="Layer-wise performance on SD LoRA"/>
           <p class="figure-caption">
-            <strong>Layer-wise performance on SD LoRA identification.</strong> MVProbe
-            substantially closes the gap to in-distribution accuracy on the 1000-class
-            setting, where ProbeX collapses to near-random performance.
+            <strong>Layer-wise performance on SD LoRA.</strong> MVProbe (solid lines)
+            vs. ProbeX (dashed lines) across all layers on \(\text{SD}_{200}\) and
+            \(\text{SD}_{1k}\) (In-Distribution and Zero-shot). Shaded bands indicate
+            per-layer volatility; red arrows mark the largest gains.
           </p>
         </div>
 
