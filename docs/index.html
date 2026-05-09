@@ -39,19 +39,18 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://github.com/AI-hew-math">Eunwoo Heo</a><sup class="eq-contrib">1†</sup>,
+              <a href="https://github.com/AI-hew-math">Eunwoo Heo</a><sup class="eq-contrib">†</sup>,
             </span>
             <span class="author-block">
-              <a href="https://github.com/tjrudrnr2">Kyungwook Seo</a><sup class="eq-contrib">1†</sup>,
+              <a href="https://github.com/tjrudrnr2">Kyeongkook Seo</a><sup class="eq-contrib">†</sup>,
             </span>
             <span class="author-block">
-              <a href="https://github.com/jaejun-yoo">Jaejun Yoo</a><sup>2*</sup>
+              <a href="https://github.com/jaejun-yoo">Jaejun Yoo</a><sup>*</sup>
             </span>
           </div>
 
           <div class="publication-affiliations">
-            <span class="author-affiliation"><span class="number">1</span>POSTECH</span>
-            <span class="author-affiliation"><span class="number">2</span>UNIST</span>
+            Ulsan National Institute of Science and Technology (UNIST)
           </div>
           <div class="publication-affiliations" style="font-size:0.95rem; margin-top:0.3rem;">
             <sup class="eq-contrib">†</sup>Equal contribution &nbsp;&nbsp; <sup>*</sup>Corresponding author
@@ -116,20 +115,25 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3 section-title">Abstract</h2>
         <div class="content has-text-justified">
-          <!-- TODO: replace with verbatim abstract from OpenReview -->
           <p>
-            Predicting properties of neural networks directly from their weights is a
-            powerful tool for understanding and managing populations of models, but
-            existing linear probes capture only a fraction of the information encoded in
-            weight space. We propose <strong>MVProbe</strong>, a multi-view probing
-            framework that combines first- and second-order weight statistics through a
-            small set of view-specific branches. By aggregating complementary perspectives
-            on the same weights, MVProbe substantially improves both discriminative
-            classification on the Model Jungle benchmark (ResNet, SupViT, MAE, DINO
-            fine-tunes) and generative LoRA identification on Stable Diffusion adapters
-            (SD_200 and SD_1k). MVProbe establishes a new state of the art across both
-            regimes while remaining a lightweight probe that does not require
-            end-to-end fine-tuning of the underlying weights.
+            The explosive growth of open-source model repositories has created a
+            <em>Model Jungle</em>, where checkpoints are frequently shared without adequate
+            documentation or metadata. While weight-space learning offers a pathway to
+            identify and analyze these models directly from their parameters, processing
+            full-scale weights is computationally prohibitive. Probing-based methods have
+            emerged as a lightweight alternative, extracting permutation-equivariant
+            representations via learnable probe vectors. However, existing probing methods
+            are limited by a single-view design: they capture first-order structures but
+            fail to encode the rich, higher-order correlation patterns inherent in
+            row–column interactions. To bridge this gap, we introduce
+            <strong>MVProbe</strong>, a multi-perspective probing framework that
+            synthesizes first-order signals with interaction-aware (Gram-based) views.
+            Our approach is theoretically grounded; we analyze the scaling laws of
+            different probing orders to derive a principled standardization and fusion
+            strategy that ensures balanced contributions from all branches. On the
+            Model Jungle benchmark, MVProbe consistently outperforms the
+            state-of-the-art ProbeX across diverse architectures, including ResNet,
+            SupViT, MAE, and DINO.
           </p>
         </div>
       </div>
@@ -310,7 +314,7 @@
         </button>
 <pre id="bibtex-content" class="bibtex-block">@inproceedings{heo2026mvprobe,
   title     = {What Linear Probes Miss: Multi-View Probing for Weight-Space Learning},
-  author    = {Heo, Eunwoo and Seo, Kyungwook and Yoo, Jaejun},
+  author    = {Heo, Eunwoo and Seo, Kyeongkook and Yoo, Jaejun},
   booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
   year      = {2026},
   series    = {Proceedings of Machine Learning Research},
