@@ -161,19 +161,6 @@
         <h2 class="title is-3 section-title has-text-centered">Method</h2>
 
         <div class="content has-text-justified">
-          <p class="has-text-grey is-size-7" style="text-align:center; margin-bottom:1.5rem;">
-            See the architecture overview at the top of the page.
-            <strong>(a) First-order probing</strong> uses probes \(\mathbf{U},\mathbf{V}\)
-            to produce \(\mathbf{XU}\) and \(\mathbf{X}^{\top}\mathbf{V}\).
-            <strong>(b) Second-order probing</strong> applies the Gram operators to
-            yield \(\mathbf{X}^{\top}\mathbf{X}\mathbf{Z}\) and
-            \(\mathbf{X}\mathbf{X}^{\top}\mathbf{W}\).
-            <strong>(c)</strong> Branches are standardized, projected by per-branch MLPs,
-            concatenated, and passed to a shared encoder + classifier head.
-          </p>
-        </div>
-
-        <div class="content has-text-justified">
           <p>
             Existing single-direction probes summarize a weight matrix
             \(\mathbf{X}\in\mathbb{R}^{m\times n}\) by a single first-order projection
