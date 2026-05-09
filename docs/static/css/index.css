@@ -352,6 +352,84 @@ sup.eq-contrib {
   text-decoration: underline;
 }
 
+/* Theorem 1 animated illustration */
+.thm1-animation {
+  width: 100%;
+  max-width: 720px;
+  margin: 1rem auto 0.5rem;
+  display: block;
+}
+
+.thm1-animation .stage-label {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 13px;
+  fill: #555;
+  text-anchor: middle;
+}
+
+.thm1-animation .stage-divider {
+  stroke: #d8e0ea;
+  stroke-dasharray: 4 4;
+}
+
+.thm1-animation .arrow {
+  stroke: #999;
+  stroke-width: 1.5;
+  fill: none;
+  marker-end: url(#thm1-arrow-head);
+}
+
+.thm1-animation .cluster-label {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.thm1-animation .x1-cluster {
+  animation: x1-flow 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.thm1-animation .x2-cluster {
+  animation: x2-flow 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.thm1-animation .x1-cluster .cluster-label { fill: #d04a3a; }
+.thm1-animation .x2-cluster .cluster-label { fill: #2772ad; }
+
+.thm1-animation .x1-cluster circle { fill: #e74c3c; }
+.thm1-animation .x2-cluster circle { fill: #3498db; }
+
+@keyframes x1-flow {
+  0%, 14%   { transform: translate(120px, 105px); }
+  33%, 52%  { transform: translate(360px, 150px); }
+  71%, 100% { transform: translate(600px, 95px); }
+}
+
+@keyframes x2-flow {
+  0%, 14%   { transform: translate(120px, 195px); }
+  33%, 52%  { transform: translate(360px, 150px); }
+  71%, 100% { transform: translate(600px, 205px); }
+}
+
+@keyframes overlap-glow {
+  0%, 18%, 60%, 100% { opacity: 0; }
+  35%, 50% { opacity: 1; }
+}
+
+.thm1-animation .overlap-glow {
+  animation: overlap-glow 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  fill: #f1c40f;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thm1-animation .x1-cluster,
+  .thm1-animation .x2-cluster,
+  .thm1-animation .overlap-glow {
+    animation: none;
+  }
+}
+
 /* Acknowledgements */
 .ack-section {
   background: #fafafa;
