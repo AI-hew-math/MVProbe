@@ -1,12 +1,12 @@
 # MVProbe
 
+<p align="center">
+  <img src="overview.png" width="800">
+</p>
+
 Official PyTorch implementation of **"What Linear Probes Miss: Multi-View Probing for Weight-Space Learning"** (ICML 2026).
 
 > **Note on collaboration.** This codebase was developed jointly with the co-authors of the paper. It is not the work of a single author — please see the paper for the full author list and contributions.
-
-<p align="center">
-  <img src="a/overview.png" width="800">
-</p>
 
 ## Main Results
 
