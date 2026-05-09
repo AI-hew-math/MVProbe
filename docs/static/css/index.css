@@ -378,50 +378,13 @@ sup.eq-contrib {
 }
 
 .thm1-animation .anim-dot {
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
-  stroke: white;
-  stroke-width: 6;
-}
-
-.thm1-animation .anim-dot.dot-red  { fill: #b8312a; }
-.thm1-animation .anim-dot.dot-blue { fill: #1f5f96; }
-
-.thm1-animation .dot-red {
-  animation: dot-red-flow 7.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-}
-.thm1-animation .dot-blue {
-  animation: dot-blue-flow 7.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-}
-
-@keyframes dot-red-flow {
-  0%,  8%   { cx: 240; cy: 240; }
-  20%, 36%  { cx: 715; cy: 410; }
-  46%, 56%  { cx: 1180; cy: 240; }
-  72%, 100% { cx: 1700; cy: 280; }
-}
-
-@keyframes dot-blue-flow {
-  0%,  8%   { cx: 240; cy: 600; }
-  20%, 36%  { cx: 715; cy: 430; }
-  46%, 56%  { cx: 1180; cy: 600; }
-  72%, 100% { cx: 2080; cy: 540; }
-}
-
-.thm1-animation .overlap-pulse {
-  fill: rgba(241, 196, 15, 0.55);
-  animation: overlap-pulse 7.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-}
-
-@keyframes overlap-pulse {
-  0%, 12%, 50%, 100% { r: 0; opacity: 0; }
-  22%, 36%           { r: 80; opacity: 0.85; }
-  42%                { r: 110; opacity: 0; }
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .thm1-animation .anim-dot,
-  .thm1-animation .overlap-pulse {
-    animation: none;
+  .thm1-animation .anim-dot animate,
+  .thm1-animation circle animate {
+    /* SMIL animations cannot be paused via CSS; users on reduced-motion will still see motion. */
   }
 }
 

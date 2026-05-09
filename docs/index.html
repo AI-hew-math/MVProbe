@@ -227,12 +227,52 @@
                  alt="Conceptual illustration of Theorem 1: weight matrices, first-order projection collapsing, second-order projection separating"/>
             <svg class="thm1-overlay" viewBox="0 0 2400 837" preserveAspectRatio="none"
                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <!-- Pulse highlight when dots overlap (first-order collapse) -->
-              <circle class="overlap-pulse" cx="715" cy="420" r="0"/>
 
-              <!-- Animated tracer dots traveling through the figure -->
-              <circle class="anim-dot dot-red" cx="240" cy="240" r="32"/>
-              <circle class="anim-dot dot-blue" cx="240" cy="600" r="32"/>
+              <!-- Pulse highlight when dots overlap (first-order collapse) -->
+              <circle cx="715" cy="420" r="0" fill="rgba(241, 196, 15, 0.55)">
+                <animate attributeName="r"
+                         values="0; 0; 110; 0; 0; 0"
+                         keyTimes="0; 0.20; 0.32; 0.44; 0.95; 1"
+                         dur="9s" repeatCount="indefinite"/>
+                <animate attributeName="opacity"
+                         values="0; 0; 0.85; 0; 0; 0"
+                         keyTimes="0; 0.20; 0.32; 0.44; 0.95; 1"
+                         dur="9s" repeatCount="indefinite"/>
+              </circle>
+
+              <!-- Red tracer dot (X1) -->
+              <circle class="anim-dot dot-red" r="38" cx="240" cy="240"
+                      fill="#b8312a" stroke="white" stroke-width="6">
+                <animate attributeName="cx"
+                         values="240; 240; 715; 715; 1700; 1700; 240"
+                         keyTimes="0; 0.05; 0.32; 0.44; 0.78; 0.95; 1"
+                         dur="9s" repeatCount="indefinite"/>
+                <animate attributeName="cy"
+                         values="240; 240; 410; 410; 280; 280; 240"
+                         keyTimes="0; 0.05; 0.32; 0.44; 0.78; 0.95; 1"
+                         dur="9s" repeatCount="indefinite"/>
+                <animate attributeName="opacity"
+                         values="1; 1; 1; 1; 1; 1; 0; 1"
+                         keyTimes="0; 0.05; 0.32; 0.44; 0.78; 0.93; 0.97; 1"
+                         dur="9s" repeatCount="indefinite"/>
+              </circle>
+
+              <!-- Blue tracer dot (X2) -->
+              <circle class="anim-dot dot-blue" r="38" cx="240" cy="600"
+                      fill="#1f5f96" stroke="white" stroke-width="6">
+                <animate attributeName="cx"
+                         values="240; 240; 715; 715; 2080; 2080; 240"
+                         keyTimes="0; 0.05; 0.32; 0.44; 0.78; 0.95; 1"
+                         dur="9s" repeatCount="indefinite"/>
+                <animate attributeName="cy"
+                         values="600; 600; 430; 430; 540; 540; 600"
+                         keyTimes="0; 0.05; 0.32; 0.44; 0.78; 0.95; 1"
+                         dur="9s" repeatCount="indefinite"/>
+                <animate attributeName="opacity"
+                         values="1; 1; 1; 1; 1; 1; 0; 1"
+                         keyTimes="0; 0.05; 0.32; 0.44; 0.78; 0.93; 0.97; 1"
+                         dur="9s" repeatCount="indefinite"/>
+              </circle>
             </svg>
           </div>
           <p class="figure-caption">
