@@ -290,40 +290,33 @@
   </div>
 </section>
 
-<!-- Stat tiles: headline numbers -->
+<!-- Stat tiles: headline results -->
 <section class="section stat-tiles-section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 section-title has-text-centered">Headline Numbers</h2>
+    <h2 class="title is-3 section-title has-text-centered">Headline Results</h2>
     <p class="has-text-centered has-text-grey" style="margin-bottom:1.6rem;">
-      MVProbe's improvement over the previous state of the art (ProbeX), absolute Δ on accuracy.
+      MVProbe accuracy vs the previous state of the art (ProbeX).
     </p>
     <div class="columns is-multiline">
-      <div class="column is-3-desktop is-6-tablet">
+      <div class="column is-4-desktop">
         <div class="stat-tile">
-          <span class="stat-number">+10.6%</span>
-          <div class="stat-label">ResNet</div>
-          <div class="stat-caption">Discriminative (Model Jungle)</div>
+          <span class="stat-number">92.2%</span>
+          <div class="stat-label">Model Jungle (ResNet)</div>
+          <div class="stat-caption">ProbeX: 81.6% &nbsp;·&nbsp; SOTA on all 4 architectures</div>
         </div>
       </div>
-      <div class="column is-3-desktop is-6-tablet">
+      <div class="column is-4-desktop">
         <div class="stat-tile">
-          <span class="stat-number">+62.1%</span>
-          <div class="stat-label">SD_1k In-Distribution</div>
-          <div class="stat-caption">LoRA identification</div>
+          <span class="stat-number">97.9%</span>
+          <div class="stat-label">SD<sub>1k</sub> In-Distribution</div>
+          <div class="stat-caption">ProbeX: 35.8% &nbsp;·&nbsp; ~2.7× higher accuracy</div>
         </div>
       </div>
-      <div class="column is-3-desktop is-6-tablet">
+      <div class="column is-4-desktop">
         <div class="stat-tile">
-          <span class="stat-number">+45.5%</span>
-          <div class="stat-label">SD_1k Zero-shot</div>
-          <div class="stat-caption">Unseen LoRA classes</div>
-        </div>
-      </div>
-      <div class="column is-3-desktop is-6-tablet">
-        <div class="stat-tile">
-          <span class="stat-number">4 / 4</span>
-          <div class="stat-label">Architectures</div>
-          <div class="stat-caption">SOTA on ResNet, SupViT, MAE, DINO</div>
+          <span class="stat-number">98.0%</span>
+          <div class="stat-label">SD<sub>1k</sub> Zero-Shot</div>
+          <div class="stat-caption">ProbeX: 52.4% &nbsp;·&nbsp; robust to unseen LoRA classes</div>
         </div>
       </div>
     </div>

@@ -289,9 +289,10 @@ sup.eq-contrib {
 }
 
 .stat-tile .stat-caption {
-  font-size: 0.8rem;
-  color: #777;
-  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #6a6a6a;
+  margin-top: 0.4rem;
+  line-height: 1.4;
 }
 
 /* Theorem box */
