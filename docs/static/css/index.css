@@ -352,7 +352,7 @@ sup.eq-contrib {
   text-decoration: underline;
 }
 
-/* Theorem 1 animated illustration (pure inline SVG) */
+/* Theorem 1 animated illustration (PowerPoint-exported MP4) */
 .thm1-animation {
   width: 100%;
   max-width: 820px;
@@ -360,15 +360,13 @@ sup.eq-contrib {
   display: block;
 }
 
-.thm1-animation svg {
+.thm1-animation video {
   width: 100%;
   height: auto;
   display: block;
   background: white;
   border-radius: 8px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
-  padding: 12px;
-  box-sizing: border-box;
 }
 
 /* Acknowledgements */
