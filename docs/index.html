@@ -297,26 +297,53 @@
     <p class="has-text-centered has-text-grey" style="margin-bottom:1.6rem;">
       MVProbe vs ProbeX on the Model Jungle benchmark.
     </p>
-    <div class="columns is-multiline">
-      <div class="column is-4-desktop">
-        <div class="stat-tile">
-          <span class="stat-number">86.1%</span>
-          <div class="stat-label">Discriminative</div>
-          <div class="stat-caption">ProbeX: 79.8% &nbsp;·&nbsp; avg over ResNet, SupViT, MAE, DINO &nbsp;·&nbsp; best on all 4</div>
+
+    <p class="tile-group-label">Discriminative — fine-tune class identification</p>
+    <div class="columns is-multiline is-mobile is-variable is-2">
+      <div class="column is-3-desktop is-6-mobile">
+        <div class="stat-tile compact">
+          <span class="stat-number">92.2%</span>
+          <div class="stat-label">ResNet</div>
+          <div class="stat-caption">vs ProbeX 81.6%</div>
         </div>
       </div>
-      <div class="column is-4-desktop">
-        <div class="stat-tile">
+      <div class="column is-3-desktop is-6-mobile">
+        <div class="stat-tile compact">
+          <span class="stat-number">92.3%</span>
+          <div class="stat-label">SupViT</div>
+          <div class="stat-caption">vs ProbeX 88.1%</div>
+        </div>
+      </div>
+      <div class="column is-3-desktop is-6-mobile">
+        <div class="stat-tile compact">
+          <span class="stat-number">81.6%</span>
+          <div class="stat-label">MAE</div>
+          <div class="stat-caption">vs ProbeX 77.1%</div>
+        </div>
+      </div>
+      <div class="column is-3-desktop is-6-mobile">
+        <div class="stat-tile compact">
+          <span class="stat-number">78.3%</span>
+          <div class="stat-label">DINO</div>
+          <div class="stat-caption">vs ProbeX 72.5%</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="tile-group-label" style="margin-top:1.5rem;">Generative — Stable Diffusion LoRA identification</p>
+    <div class="columns is-multiline is-mobile is-variable is-2">
+      <div class="column is-6-desktop is-6-mobile">
+        <div class="stat-tile compact">
           <span class="stat-number">97.9%</span>
-          <div class="stat-label">Generative — SD<sub>1k</sub> In-Distribution</div>
-          <div class="stat-caption">ProbeX: 35.8% &nbsp;·&nbsp; ~2.7× higher accuracy</div>
+          <div class="stat-label">SD<sub>1k</sub> In-Distribution</div>
+          <div class="stat-caption">vs ProbeX 35.8% &nbsp;·&nbsp; ~2.7× higher</div>
         </div>
       </div>
-      <div class="column is-4-desktop">
-        <div class="stat-tile">
+      <div class="column is-6-desktop is-6-mobile">
+        <div class="stat-tile compact">
           <span class="stat-number">98.0%</span>
-          <div class="stat-label">Generative — SD<sub>1k</sub> Zero-Shot</div>
-          <div class="stat-caption">ProbeX: 52.4% &nbsp;·&nbsp; robust to unseen LoRA classes</div>
+          <div class="stat-label">SD<sub>1k</sub> Zero-Shot</div>
+          <div class="stat-caption">vs ProbeX 52.4% &nbsp;·&nbsp; robust to unseen classes</div>
         </div>
       </div>
     </div>

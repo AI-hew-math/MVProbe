@@ -295,6 +295,32 @@ sup.eq-contrib {
   line-height: 1.4;
 }
 
+.stat-tile.compact {
+  padding: 1.1rem 0.6rem;
+}
+
+.stat-tile.compact .stat-number {
+  font-size: 2.05rem;
+}
+
+.stat-tile.compact .stat-label {
+  font-size: 0.92rem;
+}
+
+.stat-tile.compact .stat-caption {
+  font-size: 0.78rem;
+}
+
+.tile-group-label {
+  text-align: center;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: hsl(204, 30%, 35%);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.7rem;
+}
+
 /* Theorem box */
 .theorem-box {
   border-left: 4px solid hsl(204, 86%, 53%);
