@@ -8,8 +8,7 @@ Official PyTorch implementation of **"What Linear Probes Miss: Multi-View Probin
 
 [![Project Page](https://img.shields.io/badge/Project_Page-blue?style=flat-square)](https://AI-hew-math.github.io/MVProbe/) &nbsp;
 [![arXiv](https://img.shields.io/badge/arXiv-2605.23410-b31b1b?style=flat-square&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2605.23410) &nbsp;
-[![OpenReview](https://img.shields.io/badge/OpenReview-8C1B13?style=flat-square)](https://openreview.net/forum?id=vfqrmuVULL) &nbsp;
-[![Github](https://img.shields.io/badge/Github-black?style=flat-square&logo=github)](https://github.com/AI-hew-math/MVProbe)
+[![OpenReview](https://img.shields.io/badge/OpenReview-8C1B13?style=flat-square)](https://openreview.net/forum?id=vfqrmuVULL)
 
 > **Note on collaboration.** This codebase was developed jointly with the co-authors of the paper. It is not the work of a single author — please see the paper for the full author list and contributions.
 
