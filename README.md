@@ -7,7 +7,7 @@
 Official PyTorch implementation of **"What Linear Probes Miss: Multi-View Probing for Weight-Space Learning"** (ICML 2026).
 
 [![Project Page](https://img.shields.io/badge/Project_Page-blue?style=flat-square)](https://AI-hew-math.github.io/MVProbe/) &nbsp;
-[![Arxiv (Coming soon)](https://img.shields.io/badge/Arxiv-red?style=flat-square)](arxiv링크) &nbsp;
+[![arXiv](https://img.shields.io/badge/arXiv-2605.23410-b31b1b?style=flat-square&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2605.23410) &nbsp;
 [![OpenReview](https://img.shields.io/badge/OpenReview-8C1B13?style=flat-square)](https://openreview.net/forum?id=vfqrmuVULL) &nbsp;
 [![Github](https://img.shields.io/badge/Github-black?style=flat-square&logo=github)](https://github.com/AI-hew-math/MVProbe)
 
